@@ -17,16 +17,18 @@
     state: latest
   tags: nginx
 
-- name: LetsEncrypt - Generate cert
+- name: LetsEncrypt - Check if certificates already exists.
   become: true
-  command: 'certbot --nginx -d {{ domains }} --test-cert --non-interactive --agree-tos -m {{ email }}'
+  ansible.builtin.stat:
+    path: "{{ cert_path }}"
+  register: certs
   tags: nginx
 
-#- name: LetsEncrypt - Generate dhparam 2048
-#  community.crypto.openssl_dhparam:
-#    path: "{{ dh_path }}/dhparams.pem"
-#    size: 2048
-#  tags: nginx
+- name: LetsEncrypt - Generate cert
+  become: true
+  command: 'certbot --nginx {{ domains }} --test-cert --non-interactive --agree-tos -m {{ email }}'
+  tags: nginx
+  when: not certs.stat.exists
 
 - name: LetsEncrypt - Edit Crontab 
   become: yes

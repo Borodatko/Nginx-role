@@ -1,12 +1,25 @@
 ---
 
+- name: Nginx - Check if https configuration exist
+  become: true
+  ansible.builtin.stat:
+    path: "{{ conf_path }}/www.conf"
+  register: https
+
 - name: Nginx - Add www config
   become: true
   ansible.builtin.template:
     src: www.conf.j2
     dest: "{{ conf_path }}/www.conf"
     mode: '644'
+  when: not https.stat.exists
   tags: nginx
+
+- name: Nginx - Check if https configuration exist
+  become: true
+  ansible.builtin.stat:
+    path: "{{ conf_path }}/prometheus.conf"
+  register: https
 
 - name: Nginx - Add prometheus config
   become: true
@@ -14,7 +27,14 @@
     src: prometheus.conf.j2
     dest: "{{ conf_path }}/prometheus.conf"
     mode: '644'
+  when: not https.stat.exists
   tags: nginx
+
+- name: Nginx - Check if https configuration exist
+  become: true
+  ansible.builtin.stat:
+    path: "{{ conf_path }}/alertmanager.conf"
+  register: https
 
 - name: Nginx - Add alertmanager config
   become: true
@@ -22,7 +42,14 @@
     src: alertmanager.conf.j2
     dest: "{{ conf_path }}/alertmanager.conf"
     mode: '644'
+  when: not https.stat.exists
   tags: nginx
+
+- name: Nginx - Check if https configuration exist
+  become: true
+  ansible.builtin.stat:
+    path: "{{ conf_path }}/grafana.conf"
+  register: https
 
 - name: Nginx - Add grafana config
   become: true
@@ -30,7 +57,14 @@
     src: grafana.conf.j2
     dest: "{{ conf_path }}/grafana.conf"
     mode: '644'
+  when: not https.stat.exists
   tags: nginx
+
+- name: Nginx - Check if https configuration exist
+  become: true
+  ansible.builtin.stat:
+    path: "{{ conf_path }}/gitlab.conf"
+  register: https
 
 - name: Nginx - Add gitlab config
   become: true
@@ -38,6 +72,7 @@
     src: gitlab.conf.j2
     dest: "{{ conf_path }}/gitlab.conf"
     mode: '644'
+  when: not https.stat.exists
   tags: nginx
 
 - name: Nginx - Add upstream config
