@@ -10,7 +10,7 @@ conf_path: "/etc/nginx/conf.d"
 # letsencrypt.yml
 domains: "CHANGEME"
 email: "CHANGEME"
-cert_path: "CHANGEME"
+cert_path: "/etc/letsencrypt/live/CHANGEME/cert.pem"
 
 # exporter.yml
 arch: "linux-amd64"
