@@ -8,8 +8,8 @@ repo_path: "/etc/yum.repos.d"
 conf_path: "/etc/nginx/conf.d"
 
 # letsencrypt.yml
-wildcard_domain: "*.mooo.com"
-email: "dim_id_roll@mail.ru"
+wildcard_domain: "CHANGEME"
+email: "CHANGEME"
 dh_path: "/etc/ssl/certs"
 
 # exporter.yml
@@ -23,14 +23,14 @@ systemd_path: "/etc/systemd/system"
 
 # templates
 
-server_name_alertmanager: ""
-server_name_gitlab: ""
-server_name_grafana: ""
-server_name_prometheus: ""
-server_name_www: ""
+server_name_alertmanager: "CHANGEME"
+server_name_gitlab: "CHANGEME"
+server_name_grafana: "CHANGEME"
+server_name_prometheus: "CHANGEME"
+server_name_www: "CHANGEME"
 
-ip_upstream_alertmanager: ""
-ip_upstream_gitlab: ""
-ip_upstream_grafana: ""
-ip_upstream_prometheus: ""
-ip_upstream_www: ""
+ip_upstream_alertmanager: "CHANGEME"
+ip_upstream_gitlab: "CHANGEME"
+ip_upstream_grafana: "CHANGEME"
+ip_upstream_prometheus: "CHANGEME"
+ip_upstream_www: "CHANGEME"

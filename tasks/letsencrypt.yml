@@ -22,11 +22,11 @@
   command: 'certbot --nginx -d {{ wildcard_domain }} --test-cert --non-interactive --agree-tos -m {{ email }}'
   tags: nginx
 
-- name: LetsEncrypt - Generate dhparam 2048
-  community.crypto.openssl_dhparam:
-    path: "{{ dh_path }}/dhparams.pem"
-    size: 2048
-  tags: nginx
+#- name: LetsEncrypt - Generate dhparam 2048
+#  community.crypto.openssl_dhparam:
+#    path: "{{ dh_path }}/dhparams.pem"
+#    size: 2048
+#  tags: nginx
 
 #add dh param to nginx configs
 #ssl_dhparam /etc/ssl/certs/dhparam.pem; to /etc/nginx/nginx.conf
