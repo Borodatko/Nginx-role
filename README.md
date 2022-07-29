@@ -13,7 +13,7 @@ Role Variables
 | conf_path | path to nginx configs | string | /etc/nginx/conf.d |
 | domains | list of domains via *-d* to obtain a certificate | string | CHANGEME |
 | email | admin email for let's encrypt notifications| string | CHANGEME |
-| cert_path | path to let's encrypt certificate | string | CHANGEME |
+| cert_path | path to let's encrypt certificate, like /etc/letsencrypt/live/your_site/cert.pem | string | CHANGEME |
 | arch | architecture  | string | linux-amd64 |
 | bin_path | path to binary  | string | /usr/local/bin |
 | tmp_path | temporary path  | string | /tmp |
