@@ -40,7 +40,7 @@ Example Playbook
 - name: Nginx Provisioning
   hosts: nginx
   roles:
-    - nginx
+    - Nginx-role
 ```
 
 
