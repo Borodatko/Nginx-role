@@ -11,7 +11,7 @@ Role Variables
 |------|-------------|------|---------|
 | repo_path | path to repositories directory | string | /etc/yum.repos.d |
 | conf_path | path to nginx configs | string | /etc/nginx/conf.d |
-| wildcard_domain | let's encrypt wildcard cert name | string | CHANGEME |
+| domains | list of domains via *-d* to obtain a certificate | string | CHANGEME |
 | email | admin email for let's encrypt notifications| string | CHANGEME |
 | dh_path | path to dhparam | string | /etc/ssl/certs |
 | arch | architecture  | string | linux-amd64 |
