@@ -1,12 +1,13 @@
 server {
-        listen 80;
-        server_name {{ server_name_gitlab }};
+    listen 80;
+    server_name {{ server_name_gitlab }};
+    server_tokens off;
 
-        error_log  /var/log/nginx/gitlab.error.log;
-        access_log /var/log/nginx/gitlab.access.log;
+    error_log  /var/log/nginx/gitlab.error.log;
+    access_log /var/log/nginx/gitlab.access.log;
 
-        location / {
-            proxy_set_header Host $http_host;
-            proxy_pass http://gitlab.upstream;
-        }
+    location / {
+        proxy_set_header Host $http_host;
+        proxy_pass http://gitlab.upstream;
+    }
 }

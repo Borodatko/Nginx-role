@@ -1,13 +1,14 @@
 server {
-        listen 80;
-        server_name {{ server_name_prometheus }};
+    listen 80;
+    server_name {{ server_name_prometheus }};
+    server_tokens off;
 
-        error_log  /var/log/nginx/prometheus.error.log;
-        access_log /var/log/nginx/prometheus.access.log;
+    error_log  /var/log/nginx/prometheus.error.log;
+    access_log /var/log/nginx/prometheus.access.log;
 
-        location / {
-            proxy_pass http://prometheus.upstream;
-            proxy_set_header   X-Real-IP $proxy_protocol_addr;
-            proxy_set_header   X-Forwarded-For $proxy_protocol_addr;
-        }
+    location / {
+        proxy_pass http://prometheus.upstream;
+        proxy_set_header   X-Real-IP $proxy_protocol_addr;
+        proxy_set_header   X-Forwarded-For $proxy_protocol_addr;
+    }
 }

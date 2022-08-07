@@ -1,12 +1,13 @@
 server {
-        listen 80;
-        server_name {{ server_name_grafana }};
+    listen 80;
+    server_name {{ server_name_grafana }};
+    server_tokens off;
 
-        error_log  /var/log/nginx/grafana.error.log;
-        access_log /var/log/nginx/grafana.access.log;
+    error_log  /var/log/nginx/grafana.error.log;
+    access_log /var/log/nginx/grafana.access.log;
 
-        location / {
-            proxy_set_header Host $http_host;
-            proxy_pass http://grafana.upstream;
-        }
+    location / {
+        proxy_set_header Host $http_host;
+        proxy_pass http://grafana.upstream;
+    }
 }
