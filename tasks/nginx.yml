@@ -5,6 +5,7 @@
   ansible.builtin.stat:
     path: "{{ conf_path }}/www.conf"
   register: https
+  tags: nginx
 
 - name: Nginx - Add www config
   become: true
@@ -20,6 +21,7 @@
   ansible.builtin.stat:
     path: "{{ conf_path }}/prometheus.conf"
   register: https
+  tags: nginx
 
 - name: Nginx - Add prometheus config
   become: true
@@ -35,6 +37,7 @@
   ansible.builtin.stat:
     path: "{{ conf_path }}/alertmanager.conf"
   register: https
+  tags: nginx
 
 - name: Nginx - Add alertmanager config
   become: true
@@ -50,6 +53,7 @@
   ansible.builtin.stat:
     path: "{{ conf_path }}/grafana.conf"
   register: https
+  tags: nginx
 
 - name: Nginx - Add grafana config
   become: true
@@ -65,6 +69,7 @@
   ansible.builtin.stat:
     path: "{{ conf_path }}/gitlab.conf"
   register: https
+  tags: nginx
 
 - name: Nginx - Add gitlab config
   become: true

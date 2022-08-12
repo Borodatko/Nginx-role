@@ -27,8 +27,8 @@
 - name: LetsEncrypt - Generate cert
   become: true
   command: 'certbot --nginx {{ domains }} --test-cert --non-interactive --agree-tos -m {{ email }}'
-  tags: nginx
   when: not certs.stat.exists
+  tags: nginx
 
 - name: LetsEncrypt - Edit Crontab
   become: yes
