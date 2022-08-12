@@ -20,4 +20,3 @@
       - nginx
     state: latest
   tags: nginx
-

@@ -30,7 +30,7 @@
   tags: nginx
   when: not certs.stat.exists
 
-- name: LetsEncrypt - Edit Crontab 
+- name: LetsEncrypt - Edit Crontab
   become: yes
   ansible.builtin.cron:
     user: "root"
