@@ -1,4 +1,4 @@
-Role Name
+Nginx
 =========
 
 Ansible role for Nginx installation & configuration.
