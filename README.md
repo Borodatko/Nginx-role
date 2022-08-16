@@ -1,4 +1,4 @@
-Nginx
+Role Name
 =========
 
 Ansible role for Nginx installation & configuration.
@@ -26,11 +26,7 @@ Role Variables
 | node_exporter_path_tmp | temporary path | string | {{ tmp_path }}/node_exporter-{{ node_exporter_version }}.{{ arch }} |
 | systemd_path | systemd unit file path | string | /etc/systemd/system |
 | ***template variables*** |
-| server_name_alertmanager | webserver name | string | CHANGEME |
-| server_name_gitlab | webserver name | string | CHANGEME |
-| server_name_grafana | webserver name | string | CHANGEME |
-| server_name_prometheus | webserver name | string | CHANGEME |
-| server_name_www | webserver name | string | CHANGEME |
+| domain_name | domain name | string | CHANGEME |
 | ip_upstream_alertmanager | webserver internal ip address | string | CHANGEME |
 | ip_upstream_gitlab | webserver internal ip address | string | CHANGEME |
 | ip_upstream_grafana | webserver internal ip address | string | CHANGEME |

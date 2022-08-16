@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name {{ server_name_www }};
+    server_name www.{{ domain_name }};
     server_tokens off;
 
     error_log  /var/log/nginx/www.error.log;

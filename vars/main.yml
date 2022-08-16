@@ -22,11 +22,7 @@ node_exporter_path_tmp: "{{ tmp_path }}/node_exporter-{{ node_exporter_version }
 systemd_path: "/etc/systemd/system"
 
 # templates
-server_name_alertmanager: "CHANGEME"
-server_name_gitlab: "CHANGEME"
-server_name_grafana: "CHANGEME"
-server_name_prometheus: "CHANGEME"
-server_name_www: "CHANGEME"
+domain_name: "CHANGEME"
 
 ip_upstream_alertmanager: "CHANGEME"
 ip_upstream_gitlab: "CHANGEME"
