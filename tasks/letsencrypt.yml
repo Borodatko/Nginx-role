@@ -26,7 +26,7 @@
 
 - name: LetsEncrypt - Generate cert
   become: true
-  command: 'certbot --nginx {{ domains }} --test-cert --non-interactive --agree-tos -m {{ email }}'
+  command: 'certbot --nginx {{ domains }} --non-interactive --agree-tos -m {{ email }}'
   when: not certs.stat.exists
   tags: nginx
 
