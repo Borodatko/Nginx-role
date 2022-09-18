@@ -5,7 +5,9 @@
   ansible.builtin.stat:
     path: "{{ conf_path }}/www.conf"
   register: https
-  tags: nginx
+  tags: 
+    - nginx
+    - upstream
 
 - name: Nginx - Add www config
   become: true
@@ -14,14 +16,18 @@
     dest: "{{ conf_path }}/www.conf"
     mode: '644'
   when: not https.stat.exists
-  tags: nginx
+  tags:
+    - nginx
+    - upstream
 
 - name: Nginx - Check if https configuration exist
   become: true
   ansible.builtin.stat:
     path: "{{ conf_path }}/prometheus.conf"
   register: https
-  tags: nginx
+  tags:
+    - nginx
+    - upstream
 
 - name: Nginx - Add prometheus config
   become: true
@@ -30,14 +36,18 @@
     dest: "{{ conf_path }}/prometheus.conf"
     mode: '644'
   when: not https.stat.exists
-  tags: nginx
+  tags:
+    - nginx
+    - upstream
 
 - name: Nginx - Check if https configuration exist
   become: true
   ansible.builtin.stat:
     path: "{{ conf_path }}/alertmanager.conf"
   register: https
-  tags: nginx
+  tags:
+    - nginx
+    - upstream
 
 - name: Nginx - Add alertmanager config
   become: true
@@ -46,14 +56,18 @@
     dest: "{{ conf_path }}/alertmanager.conf"
     mode: '644'
   when: not https.stat.exists
-  tags: nginx
+  tags:
+    - nginx
+    - upstream
 
 - name: Nginx - Check if https configuration exist
   become: true
   ansible.builtin.stat:
     path: "{{ conf_path }}/grafana.conf"
   register: https
-  tags: nginx
+  tags:
+    - nginx
+    - upstream
 
 - name: Nginx - Add grafana config
   become: true
@@ -62,14 +76,18 @@
     dest: "{{ conf_path }}/grafana.conf"
     mode: '644'
   when: not https.stat.exists
-  tags: nginx
+  tags:
+    - nginx
+    - upstream
 
 - name: Nginx - Check if https configuration exist
   become: true
   ansible.builtin.stat:
     path: "{{ conf_path }}/gitlab.conf"
   register: https
-  tags: nginx
+  tags:
+    - nginx
+    - upstream
 
 - name: Nginx - Add gitlab config
   become: true
@@ -78,7 +96,9 @@
     dest: "{{ conf_path }}/gitlab.conf"
     mode: '644'
   when: not https.stat.exists
-  tags: nginx
+  tags:
+    - nginx
+    - upstream
 
 - name: Nginx - Add upstream config
   become: true
@@ -88,7 +108,9 @@
     mode: '644'
   notify:
     - Restart nginx
-  tags: nginx
+  tags:
+    - nginx
+    - upstream
 
 - name: Flush handlers
   meta: flush_handlers

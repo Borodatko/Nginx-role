@@ -6,7 +6,9 @@
     name:
       - epel-release
     state: latest
-  tags: nginx
+  tags:
+    - nginx
+    - letsenrypt
 
 - name: LetsEncrypt - Install Certbot for Nginx
   become: true
@@ -15,20 +17,26 @@
       - certbot-nginx
     enablerepo: epel
     state: latest
-  tags: nginx
+  tags:
+    - nginx
+    - letsenrypt
 
 - name: LetsEncrypt - Check if certificates already exists.
   become: true
   ansible.builtin.stat:
     path: "{{ cert_path }}"
   register: certs
-  tags: nginx
+  tags:
+    - nginx
+    - letsenrypt
 
 - name: LetsEncrypt - Generate cert
   become: true
   command: 'certbot --nginx {{ domains }} --non-interactive --agree-tos -m {{ email }}'
   when: not certs.stat.exists
-  tags: nginx
+  tags:
+    - nginx
+    - letsenrypt
 
 - name: LetsEncrypt - Edit Crontab
   become: yes
@@ -39,4 +47,6 @@
     minute: "10"
     job: "/usr/bin/certbot renew --quiet"
     state: present
-  tags: nginx
+  tags:
+    - nginx
+    - letsenrypt

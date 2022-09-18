@@ -1,11 +1,26 @@
 ---
 
-- name: Yum - edit yum.conf
-  become: yes
-  lineinfile:
-    dest: /etc/yum.conf
-    line: "http_caching=none"
-  tags: nginx
+- name: Yum - Upgrade packages
+  become: true
+  ansible.builtin.yum:
+    name: "*"
+    enablerepo: base,updates,extras
+    state: latest
+    update_cache: yes
+  tags:
+    - nginx
+    - yum
+
+- name: Yum - Install packages
+  become: true
+  ansible.builtin.yum:
+    name:
+      - python36
+    enablerepo: base,updates,extras
+    state: latest
+  tags:
+    - nginx
+    - yum
 
 - name: Yum - Add Nginx Repo
   become: true
@@ -13,7 +28,9 @@
     src: nginx-stable.repo.j2
     dest: "{{ repo_path }}/nginx-stable.repo"
     mode: '644'
-  tags: nginx
+  tags:
+    - nginx
+    - yum
 
 - name: Yum - Install Packages
   become: true
@@ -21,4 +38,6 @@
     name:
       - nginx
     state: latest
-  tags: nginx
+  tags:
+    - nginx
+    - yum
