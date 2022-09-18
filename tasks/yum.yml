@@ -32,7 +32,7 @@
     - nginx
     - yum
 
-- name: Yum - Install Packages
+- name: Yum - Install Nginx
   become: true
   yum:
     name:
