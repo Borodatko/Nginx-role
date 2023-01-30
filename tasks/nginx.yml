@@ -1,11 +1,10 @@
 ---
-
 - name: Nginx - Check if https configuration exist
   become: true
   ansible.builtin.stat:
     path: "{{ conf_path }}/www.conf"
   register: https
-  tags: 
+  tags:
     - nginx
     - upstream
 
@@ -113,4 +112,5 @@
     - upstream
 
 - name: Flush handlers
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
+...

@@ -1,11 +1,10 @@
 ---
-
 - name: LetsEncrypt - Install EPEL
   become: true
   ansible.builtin.yum:
     name:
       - epel-release
-    state: latest
+    state: present
   tags:
     - nginx
     - letsenrypt
@@ -16,7 +15,7 @@
     name:
       - certbot-nginx
     enablerepo: epel
-    state: latest
+    state: present
   tags:
     - nginx
     - letsenrypt
@@ -32,14 +31,14 @@
 
 - name: LetsEncrypt - Generate cert
   become: true
-  command: 'certbot --nginx {{ domains }} --non-interactive --agree-tos -m {{ email }}'
+  ansible.builtin.command: 'certbot --nginx {{ domains }} --non-interactive --agree-tos -m {{ email }}'
   when: not certs.stat.exists
   tags:
     - nginx
     - letsenrypt
 
 - name: LetsEncrypt - Edit Crontab
-  become: yes
+  become: true
   ansible.builtin.cron:
     user: "root"
     name: "certbot autorenew"
@@ -50,3 +49,4 @@
   tags:
     - nginx
     - letsenrypt
+...

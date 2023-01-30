@@ -4,6 +4,12 @@ Role Name
 Ansible role for Nginx installation & configuration.
 
 
+Dependencies
+------------
+
+ - RHEL7-based OS
+
+
 Role Variables
 --------------
 
@@ -21,7 +27,7 @@ Role Variables
 | arch | architecture  | string | linux-amd64 |
 | bin_path | path to binary | string | /usr/local/bin |
 | tmp_path | temporary path | string | /tmp |
-| node_exporter_version | prometheus node exporter version | string | 1.3.1 |
+| exporter_version | prometheus node exporter version | string | 1.3.1 |
 | node_exporter_archive | downloaded archive | string | {{ tmp_path }}/node_exporter-{{ node_exporter_version }}.{{ arch }}.tar.gz |
 | node_exporter_path_tmp | temporary path | string | {{ tmp_path }}/node_exporter-{{ node_exporter_version }}.{{ arch }} |
 | systemd_path | systemd unit file path | string | /etc/systemd/system |
