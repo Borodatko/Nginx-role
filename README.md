@@ -44,6 +44,7 @@ Tags
 ----
 
 Supported tags in tasks:
+
     - **pretasks**
     - **yum**
     - **nginx**
