@@ -45,12 +45,12 @@ Tags
 
 Supported tags in tasks:
 
-    - **pretasks**
-    - **yum**
-    - **nginx**
-    - **upstream**
-    - **letsenrypt**
-    - **exporter**
+ - **pretasks**
+ - **yum**
+ - **nginx**
+ - **upstream**
+ - **letsenrypt**
+ - **exporter**
 
 
 Example of inventory file
